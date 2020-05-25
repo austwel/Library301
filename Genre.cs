@@ -3,6 +3,7 @@ namespace a1 {
         Drama,
         Adventure,
         Family,
+        Action,
         SciFi,
         Comedy,
         Animated,
