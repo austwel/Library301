@@ -3,7 +3,7 @@ using System.Globalization;
 namespace a1 {
     public class MovieCollection {
         private MovieNode root;
-        private string sort = "title";
+        public string sort = "title";
         public MovieCollection() {
             root = null;
         }
@@ -99,20 +99,28 @@ namespace a1 {
             if(end > size) end = size;
             MovieCollection sub = new MovieCollection(sortBy);
             int index = 0;
-            Subcollection(root, sub, start, end, index);
+            Subcollection(root, sub, start, end, index, sub.sort);
             return sub;
         }
-        public int Subcollection(MovieNode root, MovieCollection sub, int start, int end, int index) {
-            if(root != null) {
-                index = Subcollection(root.Left, sub, start, end, index);
+        public int Subcollection(MovieNode root, MovieCollection sub, int start, int end, int index, string sort) {
+            if(root != null && sort == "title") {
+                index = Subcollection(root.Left, sub, start, end, index, sort);
                 if(index >= start) {
                     if(index >= end) return index;
                     sub.Add(root.Movie);
                 }
                 index++;
-                index = Subcollection(root.Right, sub, start, end, index);
+                index = Subcollection(root.Right, sub, start, end, index, sort);
                 return index;
-            }
+            } else if(root != null && sort == "top") {
+		index = Subcollection(root.Right, sub, start, end, index, sort);
+		if(index >= start) {
+			if(index >= end) return index;
+			sub.Add(root.Movie);
+		}
+		index++;
+		index = Subcollection(root.Left, sub, start, end, index, sort);
+	    }
             return index;
         }
         public void Display(int page = 1) {
@@ -145,12 +153,12 @@ namespace a1 {
         }
         public void TopTen(MovieNode root, ref int counter, int page) {
             if(root != null && counter < 10) {
-                TopTen(root.Left, ref counter, page);
+                TopTen(root.Right, ref counter, page);
                 Console.WriteLine("   {0, -24} {1, 20}",
                     (counter+(page-1)*5).ToString() + ((counter+(page-1)*5) == 10 ? ". " : ".  ") + Truncate(root.Movie.Title, 20),
                     "Borrowed " + root.Movie.Borrowed.ToString() + " times");
                 counter++;
-                TopTen(root.Right, ref counter, page);
+                TopTen(root.Left, ref counter, page);
             }
         }
         public MovieCollection TreeSort() {

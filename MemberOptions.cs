@@ -49,7 +49,7 @@ namespace a1 {
                 Console.ReadKey(true);
                 Borrow();
                 return;
-            } else if(_current.Movies.Find(movie.Title).Title == title) {
+            } else if(_current.Movies.Find(movie.Title) != null && _current.Movies.Find(movie.Title).Title == title) {
                 Console.WriteLine("\n   You are already borrowing {0}", title);
                 Console.ReadKey(true);
                 Borrow();
