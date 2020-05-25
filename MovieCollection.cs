@@ -111,16 +111,15 @@ namespace a1 {
                 }
                 index++;
                 index = Subcollection(root.Right, sub, start, end, index, sort);
-                return index;
             } else if(root != null && sort == "top") {
-		index = Subcollection(root.Right, sub, start, end, index, sort);
-		if(index >= start) {
-			if(index >= end) return index;
-			sub.Add(root.Movie);
-		}
-		index++;
-		index = Subcollection(root.Left, sub, start, end, index, sort);
-	    }
+                index = Subcollection(root.Right, sub, start, end, index, sort);
+                if(index >= start) {
+                    if(index >= end) return index;
+                    sub.Add(root.Movie);
+                }
+                index++;
+                index = Subcollection(root.Left, sub, start, end, index, sort);
+            }
             return index;
         }
         public void Display(int page = 1) {

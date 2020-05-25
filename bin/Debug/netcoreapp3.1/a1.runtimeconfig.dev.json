@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/austwel/.dotnet/store/|arch|/|tfm|",
-      "/home/austwel/.nuget/packages"
+      "C:\\Users\\Austwel\\.dotnet\\store\\|arch|\\|tfm|",
+      "/home/austwel/.nuget/packages/"
     ]
   }
 }
