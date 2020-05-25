@@ -1,6 +1,7 @@
 using System;
 
 namespace a1 {
+    //Movie object structure
     public class Movie {
         public string Title {get;}
         public string[] Starring {get;}
@@ -22,10 +23,15 @@ namespace a1 {
             Borrowed = 0;
             Copies = copies;
         }
+        //Borrow a movie
+        //Output: this.Borrowed + 1
+        //        this.Copies - 1
         public void Borrow() {
             Borrowed++;
             Copies--;
         }
+        //Return a movie
+        //Output: this.Copies + 1
         public void Return() {
             Copies++;
         }

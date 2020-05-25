@@ -1,6 +1,7 @@
 using System;
 namespace a1 {
     partial class Program {
+        //Collection of dummy Movie() data for testing purposes
         static MovieCollection DummyMovies() {
             MovieCollection dummyLibrary = new MovieCollection();
             dummyLibrary.Add(new Movie(
@@ -187,6 +188,7 @@ namespace a1 {
             ));
             return dummyLibrary;
         }
+        //Collection of dummy Member() data for tesing purposes
         static MemberCollection DummyMembers() {
             MemberCollection dummyMembers = new MemberCollection();
             dummyMembers.Add(new Member(

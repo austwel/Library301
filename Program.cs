@@ -1,26 +1,31 @@
 ﻿using System;
 namespace a1 {
     partial class Program {
-        public static MovieCollection _library;
-        public static MemberCollection _members;
-        public static MemberCollection _staff;
-        public static Member _current;
+        //Global variables
+        public static MovieCollection _library; //Collection of movies in the library
+        public static MemberCollection _members; //Collection of member users
+        public static MemberCollection _staff; //Collection of staff users
+        public static Member _current; //Stores user that is currently logged in, staff or member
+        //Main process
+        //Input: string[] args
+        //Output: None
         static void Main(string[] args) {
-            Setup();
             _library = DummyMovies();
             _members = DummyMembers();
             _staff = StaffList();
             MainMenu();
         }
-        static void Setup() {
-            _library = new MovieCollection();
-            _members = new MemberCollection();
-        }
+        //Creates list of staff as given in the task outline
+        //Input: None
+        //Output: MemberCollection staff (user: staff, pass: today123)
         static MemberCollection StaffList() {
             MemberCollection staffList = new MemberCollection();
             staffList.Add(new Member("staff", "", "", "", "today123", new MovieCollection()));
             return staffList;
         }
+        //Console application home menu and portal hub
+        //Input: Menu selection
+        //Output: Redirect to given login page
         static void MainMenu() {
             Console.Clear();
             Console.WriteLine("Welcome to the Community Library");
@@ -46,6 +51,9 @@ namespace a1 {
                     break;
             }
         }
+        //Login attempt for a member user
+        //Input: string username and string password
+        //Output: _current = user if successful
         static void MemberLogin() {
             Console.Clear();
             Console.WriteLine("\n==================Member Login==================");
@@ -68,6 +76,9 @@ namespace a1 {
                 MainMenu();
             }
         }
+        //Home menu for member accounts
+        //Input: Menu selection
+        //Output: Redirect to member action
         static void MemberMenu() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -110,6 +121,9 @@ namespace a1 {
                     break;
             }
         }
+        //Login attempt for a staff user
+        //Input: string username and string password
+        //Output: _current = user if successful
         static void StaffLogin() {
             Console.Clear();
             Console.WriteLine("\n==================Staff Login===================");
@@ -132,6 +146,9 @@ namespace a1 {
                 MainMenu();
             }
         }
+        //Staff home menu
+        //Input: Menu selection
+        //Output: Redirect to staff action
         static void StaffMenu() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -169,6 +186,9 @@ namespace a1 {
                     break;
             }
         }
+        //Helper function to hide passwords while the user types them
+        //Input: None
+        //Output: string password
         static string SilentPassword() {
             string password = null;
             for(;;) {

@@ -1,7 +1,11 @@
 using System;
 using System.Globalization;
 namespace a1 {
+    //Part of main process which controls staffs' abilities
     partial class Program {
+        //Adds a DVD of the user's choice to the library
+        //Input: Information about a movie
+        //Output: Movie movie added to MovieCollection _library
         static void AddDVD() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -141,9 +145,15 @@ namespace a1 {
                     goto Final;
             }
         }
+        //Helper function to add the DVD specified to the library
+        //Input: DVD information
+        //Output: new Movie added to MovieCollection _library
         static void AddDVD(string title, string[] starring, string director, int duration, Genre genre, Classification classification, DateTime releaseDate, int copies) {
             _library.Add(new Movie(title, starring, director, duration, genre, classification, releaseDate, copies));
         }
+        //Remove a DVD of the user's choice from the library
+        //Input: Movie title
+        //Output: Movie removed from MovieCollection _library
         static void RemoveDVD() {
             RemoveStart:
             Console.Clear();
@@ -202,9 +212,15 @@ namespace a1 {
                     goto RemoveConfirm;
             }
         }
+        //Helper function to remove a given DVD from the library
+        //Input: string title
+        //Output: Movie movie with title value removed from MovieCollection _library
         static void RemoveDVD(string title) {
             _library.Delete(title);
         }
+        //Method to register a new member in the system
+        //Input: new Member's information
+        //Output: added new Member to MemberCollection _members
         static void RegisterMember() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -292,6 +308,9 @@ namespace a1 {
                     goto FinalMember;
             }
         }
+        //Method to find the phone number of a given member
+        //Input: Member's full name
+        //Output: Member's phone number
         static void FindPhone() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);

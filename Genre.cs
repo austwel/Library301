@@ -1,4 +1,5 @@
 namespace a1 {
+    //Enum for Movie genres
     public enum Genre {
         Drama,
         Adventure,

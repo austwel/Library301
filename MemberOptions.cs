@@ -1,6 +1,10 @@
 using System;
 namespace a1 {
+    //Part of main process which controls members' abilities
     partial class Program {
+        //Displays movies in pages of 2, with information about each movie
+        //Input: Page number selection or return
+        //Output: Display movie data from that page
         static void DisplayMovies() {
             int size = _library.Size();
             int.TryParse(Math.Ceiling(size/2.0).ToString(), out int pages);
@@ -27,6 +31,9 @@ namespace a1 {
             if(v > 0 && v <= pages) currentPage = v < 0 ? 0 : v > pages ? pages : v;
             goto DisplayMovies;
         }
+        //Borrow a movie from the library
+        //Input: Movie title
+        //Output: Movie added to the _current Member's personal MovieCollection, Movie's borrowed++, copies--
         static void Borrow() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -66,6 +73,9 @@ namespace a1 {
             Console.ReadKey(true);
             Borrow();
         }
+        //Return a movie to the library
+        //Input: title of a movie currently borrowed by the _current Member
+        //Output: Movie removed from _current Member's personal MovieCollection and Movie's copies++
         static void Return() {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
@@ -95,6 +105,9 @@ namespace a1 {
             Console.ReadKey(true);
             Return();
         }
+        //Lists all movies and their information currently borrowed in the _current Member's name
+        //Input: None
+        //Output: Movie data for all movies in _current Member's personal MovieCollection
         static void ListBorrowed() {
             int size = MemberCollection.GetMovies(_current).Size();
             int.TryParse(Math.Ceiling(size/2.0).ToString(), out int pages);
@@ -121,6 +134,10 @@ namespace a1 {
             if(v > 0 && v <= pages) currentPage = v < 0 ? 0 : v > pages ? pages : v;
             goto DisplayMyMovies;
         }
+        //Returns information about the top ten most borrowed movies in the library
+        //Input: None
+        //Output: Outputs the movies in a ranking system from 1. to 10. based on the
+        //        amount of times they have been borrowed
         static void TopTen() {
             int size = _library.Size();
             if(size > 10) size = 10;
