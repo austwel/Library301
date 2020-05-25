@@ -70,7 +70,7 @@ namespace a1 {
             Console.Clear();
             Console.WriteLine("Logged in as {0} {1}", _current.FirstName, _current.Surname);
             Console.WriteLine("===============Return a movie DVD===============");
-            Console.WriteLine("   Which movie would you like to borrow?\n");
+            Console.WriteLine("   Which movie would you like to return?\n");
             Console.WriteLine("   Or press 'Escape' to exit");
             Console.WriteLine("================================================");
             Console.Write(" Title: ");
